@@ -8,7 +8,7 @@ const say = t => { if (!("speechSynthesis" in window)) return; speechSynthesis.c
 const el = (tag, at = {}, ...kids) => { const e = document.createElement(tag);
   for (const k in at) k === "onclick" ? e.onclick = at[k] : e.setAttribute(k, at[k]);
   kids.flat().forEach(c => e.append(c)); return e; };
-const show = (...n) => { root.replaceChildren(...n); window.scrollTo(0, 0); };
+const show = (...n) => { root.replaceChildren(...n.flat(Infinity)); window.scrollTo(0, 0); };
 const btn = (txt, fn, cls = "") => el("button", { onclick: fn, class: cls, type: "button" }, txt);
 const fields = () => S.dept.fields;
 
